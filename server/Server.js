@@ -19,10 +19,16 @@ const io = new Server(httpserver,{
 })
 
 io.on("connection",(socket)=>{
+    // this is a event having name connection it start when user connected to server
     console.log(socket.id)
 
+    socket.on("Join_Room",(data)=>{
+        socket.join(data.RoomID)
+        console.log(data)
+    })
 
     socket.on("disconnect",()=>{
+        // this is a event having name disconnect it start when user disconnected to server
         console.log("user disconect: ",socket.id)
     })
 })
