@@ -27,6 +27,11 @@ io.on("connection",(socket)=>{
         console.log(data)
     })
 
+    socket.on("Send_Message",(data)=>{
+        console.log(data)
+        socket.to(data.Room).emit("Receive_Message",data)
+    })
+
     socket.on("disconnect",()=>{
         // this is a event having name disconnect it start when user disconnected to server
         console.log("user disconect: ",socket.id)
